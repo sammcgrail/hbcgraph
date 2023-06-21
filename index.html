@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- sup max -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js Integration</title>
+    <!--Chart.js JS CDN--> 
+    <script src="./scripts/chart.min.js"></script> 
+  </head>
+  <body>
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["2023-06-21 00:00:00", "2023-06-21 00:01:00", "2023-06-21 00:02:00", "2023-06-21 00:03:00", "2023-06-21 00:04:00", "2023-06-21 00:05:00", "2023-06-21 00:06:00"],
+            datasets: [{ 
+                data: [86,114,106,106,107,111,133],
+                label: "Thermistor 1",
+                borderColor: "rgb(62,149,205)",
+                backgroundColor: "rgb(62,149,205,0.1)",
+            }, { 
+                data: [70,90,44,60,83,90,100],
+                label: "Thermistor 2",
+                borderColor: "rgb(60,186,159)",
+                backgroundColor: "rgb(60,186,159,0.1)",
+            } 
+            ]
+        },
+        options: {
+        title: {
+            display: true,
+            text: 'HBC temperature chart',
+        },
+        scales: {
+        y: {
+            ticks: {
+                // Include a dollar sign in the ticks
+                callback: function(value, index, ticks) {
+                    return '$' + value;
+                }
+            }
+        }
+    }
+        },    
+         });
+     </script>
+
+  
+  
+  </body>
+</html>
