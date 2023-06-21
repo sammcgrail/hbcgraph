@@ -12,12 +12,23 @@
   <body>
 
     <div>
-        <canvas id="myChart"></canvas>
+        <canvas id="lineChart"></canvas>
+        <canvas id="barChart"></canvas>
     </div>
 
+    <style>
+      #lineChart, #barChart {
+        display: inline-flex;
+        position: relative;
+        max-width: 50%;
+      }
+    </style>
+
     <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    const ctx2 = document.getElementById('barChart').getContext('2d');
+
+    const lineChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: ["2023-06-21 00:00:00", "2023-06-21 00:01:00", "2023-06-21 00:02:00", "2023-06-21 00:03:00", "2023-06-21 00:04:00", "2023-06-21 00:05:00", "2023-06-21 00:06:00"],
@@ -26,11 +37,13 @@
                 label: "Thermistor 1",
                 borderColor: "rgb(62,149,205)",
                 backgroundColor: "rgb(62,149,205,0.1)",
+                fill: false,
             }, { 
                 data: [70,90,44,60,83,90,100],
                 label: "Thermistor 2",
                 borderColor: "rgb(60,186,159)",
                 backgroundColor: "rgb(60,186,159,0.1)",
+                fill: false,
             } 
             ]
         },
@@ -41,9 +54,39 @@
         }       
       }
     });
-     </script>
-
-  
-  
+    const barChart = new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [{ 
+                data: [86,114,106,106,107,111,133],
+                label: "Thermistor 1",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+              }, { 
+                data: [70,90,44,60,83,90,100],
+                label: "Thermistor 2",
+                borderColor: "#3cba9f",
+                backgroundColor: "#71d1bd",
+                fill: false,
+              }, { 
+                data: [10,21,60,44,17,21,17],
+                label: "Thermistor 3",
+                borderColor: "#ffa500",
+                backgroundColor:"#ffc04d",
+                fill: false,
+              }, { 
+                data: [6,3,2,2,7,0,16],
+                label: "Thermistor 4",
+                borderColor: "#c45850",
+                backgroundColor:"#d78f89",
+                fill: false,
+              }
+            ]
+          },
+        });
+    </script>
+    </script>  
   </body>
 </html>
