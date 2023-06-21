@@ -3,21 +3,21 @@
   <head>
     <!-- sup max -->
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chart.js Integration</title>
-    <!--Chart.js JS CDN--> 
-    <script src="./scripts/chart.min.js"></script> 
+    <!--Chart.js JS CDN-->
+    <script src="./scripts/chart.min.js"></script>
   </head>
   <body>
-
     <div>
-        <canvas id="lineChart"></canvas>
-        <canvas id="barChart"></canvas>
+      <canvas id="lineChart"></canvas>
+      <canvas id="barChart"></canvas>
     </div>
 
     <style>
-      #lineChart, #barChart {
+      #lineChart,
+      #barChart {
         display: inline-flex;
         position: relative;
         max-width: 50%;
@@ -26,79 +26,112 @@
     </style>
 
     <script>
-    const ctx = document.getElementById('lineChart').getContext('2d');
-    const ctx2 = document.getElementById('barChart').getContext('2d');
+      const ctx = document.getElementById("lineChart").getContext("2d");
+      const ctx2 = document.getElementById("barChart").getContext("2d");
 
-    let yAxis = ["2023-06-21 00:00:00", "2023-06-21 00:01:00", "2023-06-21 00:02:00", "2023-06-21 00:03:00", "2023-06-21 00:04:00", "2023-06-21 00:05:00", "2023-06-21 00:06:00"]
-    let xAxisSeries1 = [86,114,106,106,107,111,133]
-    let xAxisSeries2 = [70,90,44,60,83,90,100]
+      let yAxis = [
+        "2023-06-21 00:00:00",
+        "2023-06-21 00:01:00",
+        "2023-06-21 00:02:00",
+        "2023-06-21 00:03:00",
+        "2023-06-21 00:04:00",
+        "2023-06-21 00:05:00",
+        "2023-06-21 00:06:00",
+      ];
+      let xAxisSeries1 = [86, 114, 106, 106, 107, 111, 133];
+      let xAxisSeries2 = [70, 90, 44, 60, 83, 90, 100];
 
-    const lineChart = new Chart(ctx, {
-        type: 'line',
+      const lineChart = new Chart(ctx, {
+        type: "line",
         data: {
           labels: yAxis,
-          datasets: [{ 
-                data: xAxisSeries1,
-                label: "Thermistor 1",
-                borderColor: "rgb(62,149,205)",
-                backgroundColor: "rgb(62,149,205,0.1)",
-                fill: false,
-            }, { 
-                data: xAxisSeries2,
-                label: "Thermistor 2",
-                borderColor: "rgb(60,186,159)",
-                backgroundColor: "rgb(60,186,159,0.1)",
-                fill: false,
-            } 
-            ]
+          datasets: [
+            {
+              data: xAxisSeries1,
+              label: "Thermistor 1",
+              borderColor: "rgb(62,149,205)",
+              backgroundColor: "rgb(62,149,205,0.1)",
+              fill: false,
+            },
+            {
+              data: xAxisSeries2,
+              label: "Thermistor 2",
+              borderColor: "rgb(60,186,159)",
+              backgroundColor: "rgb(60,186,159,0.1)",
+              fill: false,
+            },
+          ],
         },
         options: {
-        title: {
-            display: true,
-            text: 'HBC temperature chart',
-        }       
-      }
-    });
-
-    let yAxis2 = ["00:00:00", "00:01:00", "00:02:00", "00:03:00", "00:04:00", "00:05:00", "00:06:00"]
-    let xAxis2Series1 = [86,114,106,106,107,111,133]
-    let xAxis2Series2 = [70,90,44,60,83,90,100]
-    let xAxis2Series3 = [10,21,60,44,17,21,17]
-    let xAxis2Series4 = [6,3,2,2,7,0,16]
-
-    const barChart = new Chart(ctx2, {
-          type: 'line',
-          data: {
-            labels: yAxis2,
-            datasets: [{ 
-                data: xAxis2Series1,
-                label: "Thermistor 1",
-                borderColor: "#3e95cd",
-                backgroundColor: "#7bb6dd",
-                fill: false,
-              }, { 
-                data: xAxis2Series2,
-                label: "Thermistor 2",
-                borderColor: "#3cba9f",
-                backgroundColor: "#71d1bd",
-                fill: false,
-              }, { 
-                data: xAxis2Series3,
-                label: "Thermistor 3",
-                borderColor: "#ffa500",
-                backgroundColor:"#ffc04d",
-                fill: false,
-              }, { 
-                data: xAxis2Series4,
-                label: "Thermistor 4",
-                borderColor: "#c45850",
-                backgroundColor:"#d78f89",
-                fill: false,
-              }
-            ]
+          animation: false, // disables all animations
+          plugins: {
+            title: {
+              display: true,
+              text: "HBC temperature chart",
+            },
           },
-        });
+        },
+      });
+
+      let yAxis2 = [
+        "00:00:00",
+        "00:01:00",
+        "00:02:00",
+        "00:03:00",
+        "00:04:00",
+        "00:05:00",
+        "00:06:00",
+      ];
+      let xAxis2Series1 = [86, 114, 106, 106, 107, 111, 133];
+      let xAxis2Series2 = [70, 90, 44, 60, 83, 90, 100];
+      let xAxis2Series3 = [10, 21, 60, 44, 17, 21, 17];
+      let xAxis2Series4 = [6, 3, 2, 2, 7, 0, 16];
+
+      const barChart = new Chart(ctx2, {
+        type: "bar",
+        data: {
+          labels: yAxis2,
+          datasets: [
+            {
+              data: xAxis2Series1,
+              label: "Thermistor 1",
+              borderColor: "#3e95cd",
+              backgroundColor: "#7bb6dd",
+              fill: false,
+            },
+            {
+              data: xAxis2Series2,
+              label: "Thermistor 2",
+              borderColor: "#3cba9f",
+              backgroundColor: "#71d1bd",
+              fill: false,
+            },
+            {
+              data: xAxis2Series3,
+              label: "Thermistor 3",
+              borderColor: "#ffa500",
+              backgroundColor: "#ffc04d",
+              fill: false,
+            },
+            {
+              data: xAxis2Series4,
+              label: "Thermistor 4",
+              borderColor: "#c45850",
+              backgroundColor: "#d78f89",
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          animation: false, // disables all animations
+          plugins: {
+            title: {
+              display: true,
+              text: "HBC temperature chart bar example",
+            },
+          },
+        },
+      });
     </script>
-    </script>  
   </body>
 </html>
